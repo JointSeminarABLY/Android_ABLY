@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homeFragment"
+        android:title="홈"
+        android:icon="@drawable/selector_home"/>
 
+    <item android:id="@+id/styleFragment"
+        android:title="스타일"
+        android:icon="@drawable/selector_style"/>
+
+    <item android:id="@+id/marketFragment"
+        android:title="마켓"
+        android:icon="@drawable/selector_market"/>
+
+    <item android:id="@+id/saveListFragment"
+        android:title="찜"
+        android:icon="@drawable/selector_savelist"/>
+
+    <item android:id="@+id/myPageFragment"
+        android:title="마이페이지"
+        android:icon="@drawable/selector_mypage"/>
 </menu>
