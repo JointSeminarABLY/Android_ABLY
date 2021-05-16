@@ -7,8 +7,10 @@ import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.example.jointseminarably.R
 import com.example.jointseminarably.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.lang.RuntimeException
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()
