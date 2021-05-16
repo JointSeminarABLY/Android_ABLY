@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".main.MainActivity">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager"
@@ -21,9 +21,14 @@
             android:id="@+id/bottomnavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:labelVisibilityMode="labeled"
+            app:itemIconPadding="@dimen/navigation_icon_padding"
+            app:itemTextColor="@color/selector_bottom_nav_color"
+            style="@style/BottomNavigationView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:menu="@menu/menu_bottom_nav"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

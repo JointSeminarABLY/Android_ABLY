@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemTextColor">@color/selector_bottom_nav_color</item>
+        <item name="itemTextAppearanceActive">@style/BottomNavigationView.TextAppearance</item>
+        <item name="itemTextAppearanceInactive">@style/BottomNavigationView.TextAppearance</item>
+    </style>
+
+    <style name="BottomNavigationView.TextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">8sp</item>
+        <item name="fontFamily">@font/notosanskr_bold</item>
+    </style>
+
+
+</resources>
