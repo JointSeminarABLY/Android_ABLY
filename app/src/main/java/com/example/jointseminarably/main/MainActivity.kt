@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
+import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.jointseminarably.R
 import com.example.jointseminarably.databinding.ActivityMainBinding
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         initViewpager()
         changePageIdx()
+        selectBottomItem()
     }
 
     private fun changePageIdx() {
@@ -44,11 +46,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun selectBottomItem(){
+        binding.bottomnavigation.run {
+            setOnNavigationItemSelectedListener {
+                viewModel.changePageIdx(
+                    when (it.itemId) {
+                        R.id.homeFragment -> 0
+                        R.id.styleFragment -> 1
+                        R.id.marketFragment -> 2
+                        R.id.saveListFragment -> 3
+                        R.id.myPageFragment -> 4
+                        else -> throw RuntimeException("botttom select error")
+                    }
+                )
+                true
+            }
+        }
+    }
+
     private fun configureBottomNavigation(pageIdx: Int) {
         binding.bottomnavigation.run {
             menu.getItem(pageIdx).isChecked = true
             itemIconTintList = null
-
         }
     }
 }
