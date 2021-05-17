@@ -23,6 +23,7 @@ class DetailProductFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_detail_product, container, false)
         val itemList = mutableListOf<ProductData>()
+        val otherItemList = mutableListOf<ProductData>()
         itemList.add(ProductData("", "29,900", "내츄럴린넨펜츠(2color)", R.drawable.rectangle_32_1))
         itemList.add(ProductData("", "35,000", "핀턱롱와이드슬랙스(...", R.drawable.rectangle_32_2))
         itemList.add(ProductData("6%", "40,800", "클래식 린넨 밴드팬츠", R.drawable.rectangle_32_3))
@@ -32,8 +33,20 @@ class DetailProductFragment : Fragment() {
         itemList.add(ProductData("4%", "29,900", "골덴 하이웨스트 일자...", R.drawable.rectangle_32_7))
         itemList.add(ProductData("", "26,900", "롱 와이드 하이 면팬츠", R.drawable.rectangle_32_8))
         itemList.add(ProductData("13%", "47,000", "핀턱 골덴 와이드팬츠", R.drawable.rectangle_32_9))
-        setProdRV(itemList, binding.rvOtherProduct)
+
+        otherItemList.add(ProductData("5%", "53,200", "[무료배송] #SLOWMA..", R.drawable.rectangle_32_10))
+        otherItemList.add(ProductData("9%", "24,700", "[무료배송/베스트재입..", R.drawable.rectangle_32_11))
+        otherItemList.add(ProductData("", "19,800", "[무료배송/베스트재입..", R.drawable.rectangle_32_12))
+        otherItemList.add(ProductData("", "19,000", "[무료배송/베스트재입..", R.drawable.rectangle_32_13))
+        otherItemList.add(ProductData("", "34,000", "[무료배송/베스트재입..", R.drawable.rectangle_32_14))
+        otherItemList.add(ProductData("", "42,000", "[무료배송/베스트재입..", R.drawable.rectangle_32_15))
+        otherItemList.add(ProductData("", "21,000", "[무료배송] 데이즈 크롭..", R.drawable.rectangle_32_16))
+        otherItemList.add(ProductData("", "31,000", "[무료배송/당일발송] S..", R.drawable.rectangle_32_17))
+        otherItemList.add(ProductData("", "32,000", "[무료배송] SOAN : 홈..", R.drawable.rectangle_32_18))
+
         setProdRV(itemList, binding.rvRecommendProducts)
+        setProdRV(otherItemList, binding.rvOtherProduct)
+
         return binding.root
     }
 
