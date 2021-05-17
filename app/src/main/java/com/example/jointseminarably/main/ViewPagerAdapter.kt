@@ -20,8 +20,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter
             1 -> StyleFragment()
             2 -> MarketFragment()
             3 -> SaveListFragment()
-            //4 -> MyPageFragment()
-            4 -> DetailProductFragment()
+            4 -> MyPageFragment()
             else -> throw RuntimeException("--Error Fragment Position--")
         }
     }

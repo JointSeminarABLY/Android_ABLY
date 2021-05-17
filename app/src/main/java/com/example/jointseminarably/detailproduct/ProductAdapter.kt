@@ -37,10 +37,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         @SuppressLint("UseCompatLoadingForDrawables")
         fun bind(productData: ProductData) {
             binding.product = productData
-            with(binding){
-                ivProduct.setImageDrawable(ivProduct.context.getDrawable(productData.pic))
-//                tvDetail.text = productData.detail
-            }
+            binding.ivProduct.setImageDrawable(binding.ivProduct.context.getDrawable(productData.pic))
             if (productData.discount.isNotEmpty()) {
                 binding.tvDiscount.visibility = View.VISIBLE
             }
