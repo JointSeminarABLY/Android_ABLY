@@ -7,9 +7,9 @@ object Versions {
     const val rxjava_version = "2.1.9"
     const val rxandroid_version = "2.0.2"
 
-    const val room_version = "2.3.0-alpha04"
+    const val room_version = "2.3.0"
 
-    const val hilt_version = "2.32-alpha"
+    const val hilt_version = "2.35.1"
 
     const val paging_version = "3.0.0-alpha13"
 
@@ -19,7 +19,7 @@ object Versions {
     const val navigation_version = "2.3.5"
     const val fragment_ktx_version = "1.3.1"
     const val activity_ktx_version = "1.2.1"
-    const val lifecycle_version = "2.2.0"
+    const val lifecycle_version = "2.3.1"
 
     const val lorem_version = "2.1"
 

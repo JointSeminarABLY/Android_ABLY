@@ -1,9 +1,7 @@
 package com.example.jointseminarably.main
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.example.jointseminarably.home.HomeFragment
 import com.example.jointseminarably.market.MarketFragment
 import com.example.jointseminarably.mypage.MyPageFragment

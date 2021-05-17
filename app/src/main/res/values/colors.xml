@@ -7,8 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<<<<<<< Updated upstream
-=======
 
     <color name="ably_black">#262626</color>
     <color name="ably_black_30">#303030</color>
@@ -24,6 +22,4 @@
 
 
     <color name ="colorControlHighlight">#30BFBFBF</color>
-
->>>>>>> Stashed changes
 </resources>
