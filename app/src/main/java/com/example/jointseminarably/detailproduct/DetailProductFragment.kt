@@ -54,6 +54,7 @@ class DetailProductFragment : Fragment() {
         val prodAdapter = ProductAdapter()
         prodAdapter.setItemList(prodList)
         view.addItemDecoration(RVItemDecoration())
+        view.isNestedScrollingEnabled = false
         with(view) {
             adapter = prodAdapter
             setHasFixedSize(true)
