@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".detailproduct.DetailProductFragment">
@@ -27,15 +27,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tv_product_reco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="23dp"
+                android:fontFamily="@font/notosanskr_bold"
+                android:text="이 상품들은 어때요?"
+                android:textColor="@color/ably_black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll_div0" />
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recommend_products"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="23dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ll_div0" />
+                app:layout_constraintTop_toBottomOf="@id/tv_product_reco"
+                app:spanCount="3" />
 
             <Button
                 android:id="@+id/bt_open_products"
@@ -44,9 +60,11 @@
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="36dp"
                 android:background="@drawable/shape_more_detail_button"
+                android:fontFamily="@font/notosanskr_bold"
                 android:text="상품 정보 펼쳐보기"
                 android:textColor="@color/black"
                 android:textSize="12sp"
+                app:backgroundTint="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rv_recommend_products" />
@@ -81,7 +99,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="28dp"
-                android:src="@drawable/icon_heart_outline"
+                android:src="@drawable/ellipse_11"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_check_other_product" />
 
@@ -91,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/notosanskr_medium"
+                android:text="슬로우앤드"
                 android:textColor="@color/ably_darkgray"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@id/iv_brand"
@@ -102,32 +121,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosanskr_medium"
+                android:text="#20대 #모던 미니멀 #심플베이직"
                 android:textColor="@color/ably_gray"
                 app:layout_constraintBottom_toBottomOf="@id/iv_brand"
                 app:layout_constraintStart_toStartOf="@id/tv_brand_name"
                 tools:text="#20대 #모던 미니멀 #심플베이직" />
 
             <TextView
+                android:id="@+id/tv_new_product_in_market"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosanskr_medium"
+                android:text="마켓 신상보기"
                 android:textColor="@color/ably_blue"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/iv_detail"
                 app:layout_constraintEnd_toStartOf="@+id/iv_detail"
                 app:layout_constraintTop_toTopOf="@id/iv_detail"
+                android:layout_marginEnd="2dp"
                 tools:text="마켓 신상보기" />
 
             <ImageView
                 android:id="@+id/iv_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="9dp"
+                android:layout_height="14dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="8dp"
                 android:src="@drawable/ic_moresmall"
+
                 app:layout_constraintBottom_toBottomOf="@id/tv_more_brand_hashtags"
                 app:layout_constraintEnd_toEndOf="parent" />
-
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_other_product"
@@ -135,9 +158,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="20dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_brand" />
+                app:layout_constraintTop_toBottomOf="@id/iv_brand"
+                app:spanCount="3" />
 
             <Button
                 android:layout_width="match_parent"
@@ -147,7 +172,9 @@
                 android:layout_marginBottom="86dp"
                 android:background="@drawable/shape_more_detail_button"
                 android:fontFamily="@font/notosanskr_bold"
+                android:text="마켓 상품 더 보기"
                 android:textColor="@color/ably_black"
+                app:backgroundTint="@null"
                 app:layout_constraintBottom_toTopOf="@id/cl_bottom_buy"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -170,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:contentDescription="heart icon"
-                    android:src="@drawable/icon_heart_outline"
+                    android:src="@drawable/ic_icon_heart_outline"
                     app:layout_constraintBottom_toTopOf="@id/tv_heart_cnt"
                     app:layout_constraintEnd_toStartOf="@id/bt_buy"
                     app:layout_constraintStart_toStartOf="parent"
@@ -180,6 +207,7 @@
                     android:id="@+id/tv_heart_cnt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="5.3만"
                     android:textColor="@color/ably_red"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="@id/bt_buy"
@@ -195,6 +223,8 @@
                     android:layout_marginHorizontal="30dp"
                     android:background="@drawable/shape_buy_button"
                     android:fontFamily="@font/notosanskr_bold"
+                    android:text="구매하기"
+                    app:backgroundTint="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
