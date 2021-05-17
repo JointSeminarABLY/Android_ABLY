@@ -4,5 +4,6 @@ data class ProductData(
     val discount: String,
     val price: String,
     val detail: String,
-    var clicked: Boolean = false
+    val pic: Int,
+    var clicked: Boolean = false,
 )
