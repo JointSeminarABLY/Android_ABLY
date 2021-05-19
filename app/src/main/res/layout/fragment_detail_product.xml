@@ -16,7 +16,6 @@
 
             <!--Todo: sson peace -->
 
-
             <ImageView
                 android:id="@+id/btn_back"
                 android:layout_width="wrap_content"

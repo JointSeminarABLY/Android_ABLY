@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jointseminarably.HorizontalItemDecoration
 import com.example.jointseminarably.R
 import com.example.jointseminarably.VerticalItemDecoration
 import com.example.jointseminarably.databinding.FragmentDetailProductBinding
@@ -16,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailProductFragment : Fragment() {
     private var _binding: FragmentDetailProductBinding? = null
     private val binding get() = _binding ?: throw error("view binding error")
+    private val viewModel by viewModels<DetailProductViewModel>()
     private val itemList = mutableListOf<ProductData>()
     private val otherItemList = mutableListOf<ProductData>()
 
@@ -51,8 +54,6 @@ class DetailProductFragment : Fragment() {
             }
             (binding.rvReviewProduct.adapter as ReviewListAdapter).submitList(product.review)
         }
-    }
-
     }
 
     private fun setShipInfoRecyclerView() {

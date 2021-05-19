@@ -1,4 +1,7 @@
 package com.example.jointseminarably.detailproduct
 
-class ReviewModel {
-}
+data class ReviewModel(
+    val picture_review: Int,
+    val title_review: String,
+    val content_review: String
+)
