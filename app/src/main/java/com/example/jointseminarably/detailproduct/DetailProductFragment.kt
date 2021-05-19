@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jointseminarably.R
+import com.example.jointseminarably.VerticalItemDecoration
 import com.example.jointseminarably.databinding.FragmentDetailProductBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,20 +30,49 @@ class DetailProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setProductImageVeiwPager()
+        setProductDetailInfo()
         addItemList()
         addOtherItemList()
         setProdRV(itemList, binding.rvRecommendProducts)
         setProdRV(otherItemList, binding.rvOtherProduct)
+
+        setReviewRecyclerView()
+        setShipInfoRecyclerView()
+        loadShipInfo()
     }
 
-    private fun setProductImageVeiwPager() {
-        binding.viewpagerProduct.run {
-            adapter = ProductImageAdapter(IMAGE_LIST, this@DetailProductFragment)
-            TabLayoutMediator(binding.tablayutDotIndicator, this) { tab,position ->
-            }.attach()
+    private fun setProductDetailInfo() {
+        viewModel.productList.observe(viewLifecycleOwner) { product ->
+            viewModel.mapShippingInfo()
+            binding.viewpagerProduct.run {
+                adapter = ProductImageAdapter(product.image, this@DetailProductFragment)
+                TabLayoutMediator(binding.tablayutDotIndicator, this) { tab,position ->
+                }.attach()
+            }
+            (binding.rvReviewProduct.adapter as ReviewListAdapter).submitList(product.review)
         }
+    }
 
+    }
+
+    private fun setShipInfoRecyclerView() {
+        binding.rvShipInfo.apply {
+            adapter = ShipInfoListAdapter()
+            addItemDecoration(VerticalItemDecoration(19))
+        }
+    }
+
+    private fun loadShipInfo() {
+        viewModel.shipInfo.observe(viewLifecycleOwner) {
+            (binding.rvShipInfo.adapter as ShipInfoListAdapter).submitList(it)
+        }
+    }
+
+    private fun setReviewRecyclerView() {
+        binding.rvReviewProduct.apply {
+            adapter = ReviewListAdapter()
+            addItemDecoration(HorizontalItemDecoration(14))
+        }
     }
 
     private fun setProdRV(prodList: MutableList<ProductData>, view: RecyclerView) {
@@ -92,9 +122,5 @@ class DetailProductFragment : Fragment() {
                 R.drawable.rectangle_32_18
             )
         )
-    }
-
-    companion object {
-        private val IMAGE_LIST = arrayListOf<Int>(R.drawable.photo_pants, R.drawable.photo_pants, R.drawable.photo_pants, R.drawable.photo_pants)
     }
 }

@@ -139,6 +139,91 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_coupon" />
 
+            <TextView
+                android:id="@+id/tv_review_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="리뷰14개"
+                android:textSize="13sp"
+                android:layout_marginTop="11dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textColor="@color/ably_blue"
+                app:layout_constraintTop_toBottomOf="@id/border"
+                app:layout_constraintStart_toStartOf="@id/btn_coupon"
+                tools:text="리뷰14개"/>
+
+            <View
+                android:id="@+id/border_review"
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line_5"
+                android:layout_marginStart="3dp"
+                app:layout_constraintStart_toEndOf="@id/tv_review_count"
+                app:layout_constraintTop_toTopOf="@id/tv_review_count"
+                app:layout_constraintBottom_toBottomOf="@id/tv_review_count"/>
+
+            <TextView
+                android:id="@+id/tv_purchase_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="294개 구매중"
+                android:textColor="@color/ably_gray"
+                android:textSize="13sp"
+                android:layout_marginStart="3dp"
+                android:fontFamily="@font/notosanskr_medium"
+                app:layout_constraintTop_toTopOf="@id/border_review"
+                app:layout_constraintBottom_toBottomOf="@id/border_review"
+                app:layout_constraintStart_toEndOf="@id/border_review"/>
+
+            <TextView
+                android:id="@+id/tv_review_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/review_notice"
+                android:textColor="@color/ably_black"
+                android:textSize="13sp"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/notosanskr_medium"
+                app:layout_constraintTop_toBottomOf="@id/tv_review_count"
+                app:layout_constraintStart_toStartOf="@id/tv_review_count"
+                tools:text="@string/review_notice"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_review_product"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                tools:listitem="@layout/item_review_product"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/tv_review_notice"
+                app:layout_constraintStart_toStartOf="@id/tv_review_notice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintDimensionRatio="1:0.27"/>
+
+            <View
+                android:id="@+id/border_2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_review_product" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_ship_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_ship_info"
+                android:layout_marginTop="30dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/border_2"
+                app:layout_constraintStart_toStartOf="@id/tv_review_count"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
 
             <!--Todo : WonJoong -->
             <LinearLayout
@@ -150,7 +235,8 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/border" />
+                app:layout_constraintTop_toBottomOf="@id/rv_ship_info" />
+
 
             <TextView
                 android:id="@+id/tv_product_reco"
