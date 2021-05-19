@@ -8,5 +8,6 @@ data class ProductModel
     val review: List<ReviewModel>,
     val shipInfo: String,
     val shipCost: String,
-    val shipPeriod: String
+    val shipPeriod: String,
+    val deliveryPercentage: List<DeliveryPercentageModel>
 )

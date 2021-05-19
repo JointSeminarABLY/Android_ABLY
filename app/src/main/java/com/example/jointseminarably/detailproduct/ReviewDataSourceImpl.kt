@@ -13,7 +13,8 @@ class ReviewDataSourceImpl : ReviewDataSource {
                 REVIEW_LIST,
                 "마켓 자체 배송",
                 "무료",
-                "5/15(토)이내 도착예상 76%"
+                "5/22(토)이내 도착예상 76%",
+                deliveryPercentageModel
             )
         )
 
@@ -34,6 +35,21 @@ class ReviewDataSourceImpl : ReviewDataSource {
                 R.drawable.rectangle_28,
                 "바지가 너무너무 편해요",
                 "솔직히 기대 안 했는데 핏 좋고 정말 맘에 들었어요 또 얇아서 여름에도 매일 입을 것 같아요!!!!"
+            )
+        )
+
+        private val deliveryPercentageModel = listOf<DeliveryPercentageModel>(
+            DeliveryPercentageModel(
+            "5/22(토)",
+            76
+            ),
+            DeliveryPercentageModel(
+                "5/24(월)",
+                85
+            ),
+            DeliveryPercentageModel(
+                "5/25(화)",
+                100
             )
         )
     }

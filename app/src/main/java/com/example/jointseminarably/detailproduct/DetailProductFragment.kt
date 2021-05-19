@@ -33,6 +33,9 @@ class DetailProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
         setProductDetailInfo()
         addItemList()
         addOtherItemList()
@@ -42,6 +45,8 @@ class DetailProductFragment : Fragment() {
         setReviewRecyclerView()
         setShipInfoRecyclerView()
         loadShipInfo()
+        setDeliveryPercentageRyclerView()
+        setTabLayoutItemInfo()
     }
 
     private fun setProductDetailInfo() {
@@ -53,6 +58,15 @@ class DetailProductFragment : Fragment() {
                 }.attach()
             }
             (binding.rvReviewProduct.adapter as ReviewListAdapter).submitList(product.review)
+            (binding.rvPercentage.adapter as DeliveryPercentageAdapter).submitList(product.deliveryPercentage)
+            viewModel.changeDateDeliveryASAP(product.deliveryPercentage[0])
+        }
+    }
+
+    private fun setDeliveryPercentageRyclerView() {
+        binding.rvPercentage.apply {
+            adapter = DeliveryPercentageAdapter()
+            addItemDecoration(VerticalItemDecoration(6))
         }
     }
 
@@ -73,6 +87,19 @@ class DetailProductFragment : Fragment() {
         binding.rvReviewProduct.apply {
             adapter = ReviewListAdapter()
             addItemDecoration(HorizontalItemDecoration(14))
+        }
+    }
+
+    private fun setTabLayoutItemInfo() {
+        binding.itemInfoViewpager.apply {
+            adapter = ProductInfoAdapter(this@DetailProductFragment)
+            TabLayoutMediator(binding.tablayoutProduct, this){ tab, position ->
+                when(position) {
+                    0 -> tab.setText("상품정보")
+                    1 -> tab.setText("리뷰14")
+                    2 -> tab.setText("문의/안내")
+                }
+            }.attach()
         }
     }
 

@@ -19,12 +19,20 @@ class DetailProductViewModel @Inject constructor(
     val shipInfo: LiveData<List<ShipInfoModel>>
         get() = _shipInfo
 
+    private val _dateDeliveryASAP = MutableLiveData<DeliveryPercentageModel>()
+    val dateDeliveryASAP: LiveData<DeliveryPercentageModel>
+        get() = _dateDeliveryASAP
+
     init {
         getProductInfo()
     }
 
     private fun getProductInfo() {
         _ProductList.postValue(reviewRepository.getReviewList())
+    }
+
+    fun changeDateDeliveryASAP(date: DeliveryPercentageModel) {
+        _dateDeliveryASAP.value = date
     }
 
     fun mapShippingInfo() {
