@@ -3,6 +3,7 @@ package com.example.jointseminarably.detailproduct
 import com.example.jointseminarably.R
 import io.reactivex.Single
 
+//Todo: 서버Api 나오면 Response만들어서 뷰에서 쓰이는 Entity와 맵핑하기, 이후 더미데이터 삭제
 class ReviewDataSourceImpl : ReviewDataSource {
     override fun getReviewList(): Single<ProductModel> =
         Single.just(
