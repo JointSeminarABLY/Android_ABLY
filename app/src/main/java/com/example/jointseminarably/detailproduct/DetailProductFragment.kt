@@ -54,7 +54,7 @@ class DetailProductFragment : Fragment() {
             viewModel.mapShippingInfo()
             binding.viewpagerProduct.run {
                 adapter = ProductImageAdapter(product.image, this@DetailProductFragment)
-                TabLayoutMediator(binding.tablayutDotIndicator, this) { tab,position ->
+                TabLayoutMediator(binding.tablayutDotIndicator, this) { tab, position ->
                 }.attach()
             }
             (binding.rvReviewProduct.adapter as ReviewListAdapter).submitList(product.review)
@@ -93,8 +93,8 @@ class DetailProductFragment : Fragment() {
     private fun setTabLayoutItemInfo() {
         binding.itemInfoViewpager.apply {
             adapter = ProductInfoAdapter(this@DetailProductFragment)
-            TabLayoutMediator(binding.tablayoutProduct, this){ tab, position ->
-                when(position) {
+            TabLayoutMediator(binding.tablayoutProduct, this) { tab, position ->
+                when (position) {
                     0 -> tab.setText("상품정보")
                     1 -> tab.setText("리뷰14")
                     2 -> tab.setText("문의/안내")
@@ -106,7 +106,7 @@ class DetailProductFragment : Fragment() {
     private fun setProdRV(prodList: MutableList<ProductData>, view: RecyclerView) {
         val prodAdapter = ProductAdapter()
         prodAdapter.setItemList(prodList)
-        view.addItemDecoration(RVItemDecoration())
+        view.addItemDecoration(RVItemDecoration(0, 5, 22, 5))
         view.isNestedScrollingEnabled = false
         with(view) {
             adapter = prodAdapter
@@ -115,40 +115,44 @@ class DetailProductFragment : Fragment() {
     }
 
     private fun addItemList() {
-        itemList.add(ProductData("", "29,900", "내츄럴린넨펜츠(2color)", R.drawable.rectangle_32_1))
-        itemList.add(ProductData("", "35,000", "핀턱롱와이드슬랙스(...", R.drawable.rectangle_32_2))
-        itemList.add(ProductData("6%", "40,800", "클래식 린넨 밴드팬츠", R.drawable.rectangle_32_3))
-        itemList.add(ProductData("8%", "41,800", "[라인예술] 벨트 와이드...", R.drawable.rectangle_32_4))
-        itemList.add(ProductData("", "23,000", "코튼 핀턱 와이드 팬츠", R.drawable.rectangle_32_5))
-        itemList.add(ProductData("", "14,800", "프리밴딩pt", R.drawable.rectangle_32_6))
-        itemList.add(ProductData("4%", "29,900", "골덴 하이웨스트 일자...", R.drawable.rectangle_32_7))
-        itemList.add(ProductData("", "26,900", "롱 와이드 하이 면팬츠", R.drawable.rectangle_32_8))
-        itemList.add(ProductData("13%", "47,000", "핀턱 골덴 와이드팬츠", R.drawable.rectangle_32_9))
+        itemList.apply {
+            add(ProductData("", "29,900", "내츄럴린넨펜츠(2color)", R.drawable.rectangle_32_1))
+            add(ProductData("", "35,000", "핀턱롱와이드슬랙스(...", R.drawable.rectangle_32_2))
+            add(ProductData("6%", "40,800", "클래식 린넨 밴드팬츠", R.drawable.rectangle_32_3))
+            add(ProductData("8%", "41,800", "[라인예술] 벨트 와이드...", R.drawable.rectangle_32_4))
+            add(ProductData("", "23,000", "코튼 핀턱 와이드 팬츠", R.drawable.rectangle_32_5))
+            add(ProductData("", "14,800", "프리밴딩pt", R.drawable.rectangle_32_6))
+            add(ProductData("4%", "29,900", "골덴 하이웨스트 일자...", R.drawable.rectangle_32_7))
+            add(ProductData("", "26,900", "롱 와이드 하이 면팬츠", R.drawable.rectangle_32_8))
+            add(ProductData("13%", "47,000", "핀턱 골덴 와이드팬츠", R.drawable.rectangle_32_9))
+        }
     }
 
     private fun addOtherItemList() {
-        otherItemList.add(
-            ProductData(
-                "5%",
-                "53,200",
-                "[무료배송] #SLOWMA..",
-                R.drawable.rectangle_32_10
+        otherItemList.apply {
+            add(
+                ProductData(
+                    "5%",
+                    "53,200",
+                    "[무료배송] #SLOWMA..",
+                    R.drawable.rectangle_32_10
+                )
             )
-        )
-        otherItemList.add(ProductData("9%", "24,700", "[무료배송/베스트재입..", R.drawable.rectangle_32_11))
-        otherItemList.add(ProductData("", "19,800", "[무료배송/베스트재입..", R.drawable.rectangle_32_12))
-        otherItemList.add(ProductData("", "19,000", "[무료배송/베스트재입..", R.drawable.rectangle_32_13))
-        otherItemList.add(ProductData("", "34,000", "[무료배송/베스트재입..", R.drawable.rectangle_32_14))
-        otherItemList.add(ProductData("", "42,000", "[무료배송/베스트재입..", R.drawable.rectangle_32_15))
-        otherItemList.add(ProductData("", "21,000", "[무료배송] 데이즈 크롭..", R.drawable.rectangle_32_16))
-        otherItemList.add(ProductData("", "31,000", "[무료배송/당일발송] S..", R.drawable.rectangle_32_17))
-        otherItemList.add(
-            ProductData(
-                "",
-                "32,000",
-                "[무료배송] SOAN : 홈..",
-                R.drawable.rectangle_32_18
+            add(ProductData("9%", "24,700", "[무료배송/베스트재입..", R.drawable.rectangle_32_11))
+            add(ProductData("", "19,800", "[무료배송/베스트재입..", R.drawable.rectangle_32_12))
+            add(ProductData("", "19,000", "[무료배송/베스트재입..", R.drawable.rectangle_32_13))
+            add(ProductData("", "34,000", "[무료배송/베스트재입..", R.drawable.rectangle_32_14))
+            add(ProductData("", "42,000", "[무료배송/베스트재입..", R.drawable.rectangle_32_15))
+            add(ProductData("", "21,000", "[무료배송] 데이즈 크롭..", R.drawable.rectangle_32_16))
+            add(ProductData("", "31,000", "[무료배송/당일발송] S..", R.drawable.rectangle_32_17))
+            add(
+                ProductData(
+                    "",
+                    "32,000",
+                    "[무료배송] SOAN : 홈..",
+                    R.drawable.rectangle_32_18
+                )
             )
-        )
+        }
     }
 }
