@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="38dp">
+
+    <ImageView
+        android:id="@+id/imgv_recommend_image"
+        android:layout_width="160dp"
+        android:layout_height="192dp"
+        android:src="@drawable/rectangle_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_recommend_heart"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="9dp"
+        android:src="@drawable/ic_heart_outline"
+        app:layout_constraintEnd_toEndOf="@id/imgv_recommend_image"
+        app:layout_constraintTop_toTopOf="@id/imgv_recommend_image" />
+
+    <TextView
+        android:id="@+id/tv_recommend_sale_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="6dp"
+        android:fontFamily="@font/notosanskr_bold"
+        android:textColor="#d64f5f"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_recommend_price"
+        app:layout_constraintStart_toStartOf="@id/imgv_recommend_image"
+        app:layout_constraintTop_toBottomOf="@id/imgv_recommend_image"
+        tools:text="10%" />
+
+    <TextView
+        android:id="@+id/tv_recommend_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/notosanskr_bold"
+        android:textColor="#303030"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/imgv_recommend_image"
+        app:layout_constraintStart_toEndOf="@id/tv_recommend_sale_percent"
+        app:layout_constraintTop_toBottomOf="@id/imgv_recommend_image"
+        tools:text="36,000" />
+
+    <TextView
+        android:id="@+id/tv_recommend_brand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="9dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/notosanskr_bold"
+        android:maxLines="1"
+        android:textColor="#303030"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@id/imgv_recommend_image"
+        app:layout_constraintStart_toStartOf="@id/imgv_recommend_image"
+        app:layout_constraintTop_toBottomOf="@id/tv_recommend_price"
+        tools:text="모코블랑" />
+
+    <TextView
+        android:id="@+id/tv_recommend_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/notosanskr_regular"
+        android:maxLines="1"
+        android:textColor="@color/ably_gray"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@id/imgv_recommend_image"
+        app:layout_constraintStart_toStartOf="@id/imgv_recommend_image"
+        app:layout_constraintTop_toBottomOf="@id/tv_recommend_brand"
+        tools:text="블루밍 티셔츠~~" />
+
+    <ImageView
+        android:id="@+id/imgv_recommend_thumb_up"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/ic_thumb_up"
+        app:layout_constraintStart_toStartOf="@id/imgv_recommend_image"
+        app:layout_constraintTop_toBottomOf="@id/tv_recommend_name" />
+
+    <TextView
+        android:id="@+id/tv_recommend_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/notosanskr_regular"
+        android:maxLines="1"
+        android:textColor="@color/ably_gray"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@id/imgv_recommend_thumb_up"
+        app:layout_constraintStart_toEndOf="@id/imgv_recommend_thumb_up"
+        app:layout_constraintTop_toTopOf="@id/imgv_recommend_thumb_up"
+        tools:text="review" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
