@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="ably_black">#262626</color>
+    <color name="ably_black_30">#303030</color>
     <color name="ably_gray">#ababab</color>
     <color name="ably_lightgray">#f4f4f4</color>
     <color name="ably_darkgray">#737373</color>
@@ -16,4 +17,9 @@
     <color name="ably_red">#ec5d5e</color>
     <color name="ably_mediumgray">#cccccc</color>
     <color name="ably_blue">#6391d2</color>
+    <color name="ably_white_opacity50">#50ffffff</color>
+    <color name="ably_gray_opacity50">#50ababab</color>
+
+
+    <color name ="colorControlHighlight">#30BFBFBF</color>
 </resources>

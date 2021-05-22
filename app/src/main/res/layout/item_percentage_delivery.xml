@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="data"
+            type="com.example.jointseminarably.detailproduct.DeliveryPercentageModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/ably_gray"
+            android:fontFamily="@font/notosanskr_medium"
+            android:text="@{String.format(@string/date_delivery_percentage(data.date))}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="5/15(토)까지 도착 확률"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1.5dp"
+            android:background="@drawable/delivery_percentage_gap_line"
+            android:layerType="software"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toTopOf="@id/tv_date"
+            app:layout_constraintStart_toEndOf="@id/tv_date"
+            app:layout_constraintEnd_toStartOf="@id/tv_percentage"/>
+
+        <TextView
+            android:id="@+id/tv_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/ably_gray"
+            android:fontFamily="@font/notosanskr_medium"
+            setDeliveryPercent="@{data.percentage}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="76%"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

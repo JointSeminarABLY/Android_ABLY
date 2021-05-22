@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="data"
+            type="com.example.jointseminarably.detailproduct.ShipInfoModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_ship_attribute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.shipInfoAttribute}"
+            android:textColor="@color/ably_gray"
+            android:fontFamily="@font/notosanskr_bold"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:text="배송정보"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_ship_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.shipInfoData}"
+            android:textColor="@color/ably_black"
+            android:fontFamily="@font/notosanskr_bold"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="@id/tv_ship_attribute"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintBottom_toBottomOf="@id/tv_ship_attribute"
+            tools:text="마켓 자체 배송"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
