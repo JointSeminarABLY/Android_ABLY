@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">JointSeminarABLY</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="name_product">[기획특가/무료배송] 빌즈 썸머 밴딩코튼팬츠 - 5 color</string>
+    <string name="get_coupon">최대 50,000원 할인 쿠폰 받기</string>
+    <string name="expand_info">상품 정보 펼처보기</string>
+    <string name="review_notice">리뷰를 작성한 사람 중 100%가 만족한 상품이예요</string>
+    <string name="review_content">솔직히 기대 안 했는데 핏 좋고 정말 맘에 들었어요 또 얇아서 여름에도...</string>
+    <string name="date_delivery_percentage" formatted="false">%s까지 도착 확률</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
