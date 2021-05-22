@@ -14,7 +14,8 @@ import com.example.jointseminarably.home.data.RecommendItem
 class RecommendAdapter(
     private val activity: Activity,
     private val context: Context,
-    private val items: MutableList<RecommendItem>
+    private val items: MutableList<RecommendItem>,
+    private val listener: (RecommendItem) -> Unit
 ) : RecyclerView.Adapter<RecommendAdapter.RecommendAdapterVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendAdapterVH {
@@ -28,10 +29,16 @@ class RecommendAdapter(
     override fun onBindViewHolder(holder: RecommendAdapterVH, position: Int) {
         val item: RecommendItem = items[position]
         holder.bind(item)
+
+        holder.binding.root.setOnClickListener {
+            listener(item)
+        }
+
     }
 
     inner class RecommendAdapterVH(var binding: ItemRecommendProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: RecommendItem) {
             binding.imgvRecommendImage.setImageDrawable(ContextCompat.getDrawable(context, item.image))
             binding.tvRecommendBrand.text = item.brandName

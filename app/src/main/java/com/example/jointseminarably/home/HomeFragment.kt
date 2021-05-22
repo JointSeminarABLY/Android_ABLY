@@ -1,10 +1,14 @@
 package com.example.jointseminarably.home
 
+import android.app.ActionBar
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jointseminarably.R
@@ -21,11 +25,12 @@ import com.example.jointseminarably.home.data.SpecialCategoryItem
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding ?: error("not initialized")
+    private var check = false
 
-    val specialCategoryItemList: MutableList<SpecialCategoryItem> = mutableListOf()
-    val fashionCategoryItemList: MutableList<FashionCategoryItem> = mutableListOf()
-    val recommendItemList: MutableList<RecommendItem> = mutableListOf()
-    val rankingItemList: MutableList<RankingItem> = mutableListOf()
+    private val specialCategoryItemList: MutableList<SpecialCategoryItem> = mutableListOf()
+    private val fashionCategoryItemList: MutableList<FashionCategoryItem> = mutableListOf()
+    private val recommendItemList: MutableList<RecommendItem> = mutableListOf()
+    private val rankingItemList: MutableList<RankingItem> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,24 +43,55 @@ class HomeFragment : Fragment() {
         setFashionCategoryData()
         setRecommendData()
         setRankingData()
+        resizeRecyclerview()
+
         binding.rvSpecialCategory.run{
             layoutManager = GridLayoutManager(requireContext(), 3)
             adapter = SpecialCategoryAdapter(requireActivity(), requireContext(), specialCategoryItemList)
         }
-        binding.rvFashionCategory.run{
+        binding.rvFashionCategory.run {
             layoutManager = GridLayoutManager(requireContext(), 3)
-            adapter = FashionCategoryAdapter(requireActivity(), requireContext(), fashionCategoryItemList)
+            fashionCategoryItemList.addAll(FASHION_CATEGORY_LIST.subList(0,9))
+            adapter = FashionCategoryAdapter( fashionCategoryItemList)
         }
-        binding.rvRecommendProduct.run{
+        binding.rvRecommendProduct.run {
             layoutManager = GridLayoutManager(requireContext(), 2)
-            adapter = RecommendAdapter(requireActivity(), requireContext(), recommendItemList)
+            adapter = RecommendAdapter(requireActivity(), requireContext(), recommendItemList){
+                findNavController().navigate(R.id.action_frameFragment_to_detailProductFragment)
+            }
+
         }
-        binding.rvRanking.run{
+        binding.rvRanking.run {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = RankingAdapter(requireActivity(), requireContext(), rankingItemList)
         }
 
         return binding.root
+    }
+
+    private fun resizeRecyclerview() {
+        binding.imgvDown.setOnClickListener {
+            if (check) {
+                check = false
+                Log.e("false" , check.toString())
+                binding.rvFashionCategory.apply {
+                    fashionCategoryItemList.clear()
+                    fashionCategoryItemList.addAll(FASHION_CATEGORY_LIST.subList(0, 9))
+                    adapter = FashionCategoryAdapter( fashionCategoryItemList)
+                    (adapter as FashionCategoryAdapter).notifyDataSetChanged()
+                }
+
+            } else {
+                check = true
+                Log.e("true" , check.toString())
+                binding.rvFashionCategory.apply {
+                    fashionCategoryItemList.clear()
+                    fashionCategoryItemList.addAll(FASHION_CATEGORY_LIST)
+                    adapter = FashionCategoryAdapter(fashionCategoryItemList)
+                    (adapter as FashionCategoryAdapter).notifyDataSetChanged()
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -70,21 +106,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun setFashionCategoryData(){
-        fashionCategoryItemList.add(FashionCategoryItem("상의"))
-        fashionCategoryItemList.add(FashionCategoryItem("아우터"))
-        fashionCategoryItemList.add(FashionCategoryItem("원피스/세트"))
-        fashionCategoryItemList.add(FashionCategoryItem("팬츠"))
-        fashionCategoryItemList.add(FashionCategoryItem("스커트"))
-        fashionCategoryItemList.add(FashionCategoryItem("트레이닝"))
-        fashionCategoryItemList.add(FashionCategoryItem("가방"))
-        fashionCategoryItemList.add(FashionCategoryItem("신발"))
-        fashionCategoryItemList.add(FashionCategoryItem("패션소품"))
-        fashionCategoryItemList.add(FashionCategoryItem("주얼리"))
-        fashionCategoryItemList.add(FashionCategoryItem("디지털"))
-        fashionCategoryItemList.add(FashionCategoryItem("완구/팬시"))
-        fashionCategoryItemList.add(FashionCategoryItem("홈웨어"))
-        fashionCategoryItemList.add(FashionCategoryItem("언더웨어"))
-        fashionCategoryItemList.add(FashionCategoryItem("비치웨어"))
+        binding.imgvDown.setOnClickListener{
+            fashionCategoryItemList.apply {
+                add(FashionCategoryItem("상의"))
+                add(FashionCategoryItem("아우터"))
+                add(FashionCategoryItem("원피스/세트"))
+                add(FashionCategoryItem("팬츠"))
+                add(FashionCategoryItem("스커트"))
+                add(FashionCategoryItem("트레이닝"))
+                add(FashionCategoryItem("가방"))
+                add(FashionCategoryItem("신발"))
+            }
+        }
+
     }
 
     private fun setRecommendData(){
@@ -105,5 +139,24 @@ class HomeFragment : Fragment() {
         rankingItemList.add(RankingItem(R.drawable.ranking_2, false, true, "31%", "21,500", "다현샵", "잔꽃 플라워 미니 원피스"))
         rankingItemList.add(RankingItem(R.drawable.ranking_3, false, false, "0%", "19,400", "비비", "피크닉 나시 스커트 린넨"))
         rankingItemList.add(RankingItem(R.drawable.ranking_4, false, true, "24%", "18,900", "베베옷장", "카리나 린넨원피"))
+    }
+
+    companion object {
+        private val FASHION_CATEGORY_LIST = listOf<FashionCategoryItem>(
+            FashionCategoryItem("상의"),
+            FashionCategoryItem("아우터"),
+            FashionCategoryItem("원피스/세트"),
+            FashionCategoryItem("팬츠"),
+            FashionCategoryItem("스커트"),
+            FashionCategoryItem("트레이닝"),
+            FashionCategoryItem("가방"),
+            FashionCategoryItem("패션소품"),
+            FashionCategoryItem("주얼리"),
+            FashionCategoryItem("디지털"),
+            FashionCategoryItem("완구/팬시"),
+            FashionCategoryItem("홈웨어"),
+            FashionCategoryItem("언더웨어"),
+            FashionCategoryItem("비치웨어")
+            )
     }
 }

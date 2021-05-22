@@ -41,5 +41,6 @@ class DeliveryPercentageAdapter: ListAdapter<DeliveryPercentageModel, DeliveryPe
             }
         }
     }
+
     class DeliverPercentageViewHolder(val binding: ItemPercentageDeliveryBinding): RecyclerView.ViewHolder(binding.root)
 }

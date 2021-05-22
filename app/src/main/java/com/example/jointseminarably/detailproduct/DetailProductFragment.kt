@@ -145,14 +145,7 @@ class DetailProductFragment : Fragment() {
             add(ProductData("", "42,000", "[무료배송/베스트재입..", R.drawable.rectangle_32_15))
             add(ProductData("", "21,000", "[무료배송] 데이즈 크롭..", R.drawable.rectangle_32_16))
             add(ProductData("", "31,000", "[무료배송/당일발송] S..", R.drawable.rectangle_32_17))
-            add(
-                ProductData(
-                    "",
-                    "32,000",
-                    "[무료배송] SOAN : 홈..",
-                    R.drawable.rectangle_32_18
-                )
-            )
+            add(ProductData("", "32,000", "[무료배송] SOAN : 홈..", R.drawable.rectangle_32_18))
         }
     }
 }

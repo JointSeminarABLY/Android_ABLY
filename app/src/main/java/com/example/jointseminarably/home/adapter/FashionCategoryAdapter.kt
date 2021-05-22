@@ -9,11 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jointseminarably.databinding.ItemFashionCategoryBinding
 import com.example.jointseminarably.home.data.FashionCategoryItem
 
-class FashionCategoryAdapter(
-    private val activity: Activity,
-    private val context: Context,
-    private val items: MutableList<FashionCategoryItem>
-) : RecyclerView.Adapter<FashionCategoryAdapter.FashionAdapterVH>() {
+class FashionCategoryAdapter(private val items: MutableList<FashionCategoryItem>) : RecyclerView.Adapter<FashionCategoryAdapter.FashionAdapterVH>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -35,8 +31,6 @@ class FashionCategoryAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: FashionCategoryItem){
-//            if(adapterPosition >= 9) itemView.visibility = View.GONE
-
             binding.btnFashionCategory.text = item.title
         }
     }
