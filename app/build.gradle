@@ -6,6 +6,9 @@ plugins {
     id 'androidx.navigation.safeargs'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -18,7 +21,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String","BASE_URL", properties['baseUrl']
     }
+
+
 
     buildTypes {
         release {

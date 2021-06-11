@@ -1,14 +1,13 @@
 package com.example.jointseminarably.home
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jointseminarably.R
@@ -21,8 +20,11 @@ import com.example.jointseminarably.home.data.FashionCategoryItem
 import com.example.jointseminarably.home.data.RankingItem
 import com.example.jointseminarably.home.data.RecommendItem
 import com.example.jointseminarably.home.data.SpecialCategoryItem
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
+    private val viewModel: HomeViewModel by viewModels()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding ?: error("not initialized")
     private var check = false
@@ -41,8 +43,6 @@ class HomeFragment : Fragment() {
 
         setSpecialCategoryData()
         setFashionCategoryData()
-        setRecommendData()
-        setRankingData()
         resizeRecyclerview()
 
         binding.rvSpecialCategory.run{
@@ -67,6 +67,13 @@ class HomeFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.fetchProductList()
+        setRecommendData()
+        setRankingData()
     }
 
     private fun resizeRecyclerview() {

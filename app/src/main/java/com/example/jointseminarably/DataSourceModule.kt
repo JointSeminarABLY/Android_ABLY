@@ -15,4 +15,8 @@ object DataSourceModule {
     @Provides
     @Singleton
     fun provideReviewDataSource(): ReviewDataSource = ReviewDataSourceImpl()
+
+    @Provides
+    @Singleton
+    fun provideProductListDatSource(productListService: ProductListService): ProductListDataSource = ProductListDataSourceImpl(productListService)
 }
